@@ -791,6 +791,35 @@ require('lazy').setup({
     end,
   },
 
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+  },
+
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    keys = {
+      {
+        's',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').jump()
+        end,
+        desc = 'Flash',
+      },
+      {
+        'S',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').treesitter()
+        end,
+        desc = 'Flash Treesitter',
+      },
+    },
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
