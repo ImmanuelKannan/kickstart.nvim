@@ -3,7 +3,16 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
-      { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+      {
+        'williamboman/mason.nvim',
+        config = true,
+        opts = {
+          ensure_installed = {
+            'eslint-lsp',
+            'typescript-language-server',
+          },
+        },
+      }, -- NOTE: Must be loaded before dependants
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -166,7 +175,37 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        eslint = {
+          settings = {
+            workingDirectories = { mode = 'auto' },
+          },
+        },
+        -- tsserver = {
+        --   handlers = {
+        --     ['textDocument/publishDiagnostics'] = function(_, result, ctx, config)
+        --       if result.diagnostics ~= nil then
+        --         local idx = 1
+        --         while idx <= #result.diagnostics do
+        --           if result.diagnostics[idx].code == 80001 then
+        --             table.remove(result.diagnostics, idx)
+        --           else
+        --             idx = idx + 1
+        --           end
+        --         end
+        --       end
+        --       vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+        --     end,
+        --   },
+        -- },
+        --
+        -- eslint = {
+        --   on_attach = function(client, bufnr)
+        --     vim.api.nvim_create_autocmd('BufWritePre', {
+        --       buffer = bufnr,
+        --       command = 'EslintFixAll',
+        --     })
+        --   end,
+        -- },
         --
 
         lua_ls = {

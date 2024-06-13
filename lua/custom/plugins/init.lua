@@ -37,4 +37,31 @@ return {
     event = 'InsertEnter',
     config = true,
   },
+
+  -- {
+  --   'dense-analysis/ale',
+  --   config = function()
+  --     local g = vim.g
+  --     g.ale_ruby_rubocop_auto_correct_all = 1
+  --     g.ale_linters = {
+  --       javascript = { 'eslint' },
+  --     }
+  --   end,
+  -- },
+
+  {
+    'mfussenegger/nvim-lint',
+    event = 'VeryLazy',
+    config = function()
+      require('lint').linters_by_ft = {
+        javascript = { 'eslint' },
+      }
+
+      vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+        callback = function()
+          require('lint').try_lint()
+        end,
+      })
+    end,
+  },
 }
