@@ -101,7 +101,7 @@ return {
 
       vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
         callback = function()
-          require('lint').try_lint()
+          require('lint').try_lint(nil, { ignore_errors = true })
         end,
       })
     end,
@@ -111,6 +111,15 @@ return {
     'ahmedkhalf/project.nvim',
     config = function()
       require('project_nvim').setup()
+    end,
+  },
+
+  {
+    'kylechui/nvim-surround',
+    version = '*',
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup()
     end,
   },
 }
