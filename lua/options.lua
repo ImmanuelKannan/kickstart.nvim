@@ -61,3 +61,7 @@ vim.opt.scrolloff = 10
 
 vim.wo.relativenumber = true
 -- vim: ts=2 sts=2 sw=2 et
+
+vim.opt.tabstop = 8 -- Always 8 (see :h tabstop)
+vim.opt.softtabstop = 2 -- What you expecting
+vim.opt.shiftwidth = 2 -- What you expecting
