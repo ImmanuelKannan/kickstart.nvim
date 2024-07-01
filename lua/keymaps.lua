@@ -49,3 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- vim: ts=2 sts=2 sw=2 et
+--
+vim.keymap.set('n', '[b', ':bprevious<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', ']b', ':bnext<CR>', { noremap = true, silent = true })
