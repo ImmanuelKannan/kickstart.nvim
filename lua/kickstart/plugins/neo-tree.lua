@@ -11,14 +11,29 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
+    { '<leader>e', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    window = {
+      position = 'right',
+    },
     filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        visible = true,
+      },
       window = {
         mappings = {
-          ['\\'] = 'close_window',
+          ['<leader>e'] = 'close_window',
         },
+      },
+    },
+    event_handlers = {
+      {
+        event = 'file_open_requested',
+        handler = function()
+          require('neo-tree.command').execute { action = 'close' }
+        end,
       },
     },
   },
