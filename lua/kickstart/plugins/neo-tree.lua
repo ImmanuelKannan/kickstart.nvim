@@ -15,7 +15,7 @@ return {
   },
   opts = {
     window = {
-      position = 'right',
+      position = 'float',
     },
     filesystem = {
       filtered_items = {
@@ -25,6 +25,9 @@ return {
       window = {
         mappings = {
           ['<leader>e'] = 'close_window',
+          ['l'] = 'open',
+          ['h'] = 'close_node',
+          ['/'] = 'noop',
         },
       },
     },
