@@ -258,7 +258,24 @@ require('lazy').setup({
   -- options to `gitsigns.nvim`.
   --
   -- See `:help gitsigns` to understand what the configuration keys do
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+  -- { -- Adds git related signs to the gutter, as well as utilities for managing changes
+  --   'lewis6991/gitsigns.nvim',
+  --   opts = {
+  --     current_line_blame = true,
+  --     current_line_blame_opts = {
+  --       delay = 250,
+  --     },
+  --     signs = {
+  --       add = { text = '+' },
+  --       change = { text = '~' },
+  --       delete = { text = '_' },
+  --       topdelete = { text = '‾' },
+  --       changedelete = { text = '~' },
+  --     },
+  --   },
+  -- },
+
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
       current_line_blame = true,
@@ -266,12 +283,47 @@ require('lazy').setup({
         delay = 250,
       },
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '▎' },
+        untracked = { text = '▎' },
       },
+      signs_staged = {
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '▎' },
+      },
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+
+        map('n', ']h', function()
+          if vim.wo.diff then
+            vim.cmd.normal { ']c', bang = true }
+          else
+            gs.nav_hunk 'next'
+          end
+        end, 'Next Hunk')
+        map('n', '[h', function()
+          if vim.wo.diff then
+            vim.cmd.normal { '[c', bang = true }
+          else
+            gs.nav_hunk 'prev'
+          end
+        end, 'Prev Hunk')
+
+        map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
+        map('n', '<leader>ghB', function()
+          gs.blame()
+        end, 'Blame Buffer')
+        map('n', '<leader>ghd', gs.diffthis, 'Diff This')
+      end,
     },
   },
 
@@ -1006,7 +1058,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
