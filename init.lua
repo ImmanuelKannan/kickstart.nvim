@@ -318,6 +318,7 @@ require('lazy').setup({
           end
         end, 'Prev Hunk')
 
+        map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
         map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
         map('n', '<leader>ghB', function()
           gs.blame()
