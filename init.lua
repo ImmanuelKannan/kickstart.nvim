@@ -318,7 +318,7 @@ require('lazy').setup({
           end
         end, 'Prev Hunk')
 
-        map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+        map({ 'n', 'v' }, '<leader>ghr', ':Gitsigns reset_hunk<CR>', 'Reset Hunk')
         map('n', '<leader>ghR', gs.reset_buffer, 'Reset Buffer')
         map('n', '<leader>ghB', function()
           gs.blame()
@@ -478,8 +478,17 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader><leader>', builtin.find_files, { desc = 'Search Files' })
-      vim.keymap.set('n', '<leader>,', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind existing [B]uffers' })
+      vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
+      vim.keymap.set('n', '<leader>,', function()
+        require('telescope.builtin').buffers {
+          sort_lastused = true,
+        }
+      end, { desc = '[ ] Search existing buffers' })
+      vim.keymap.set('n', '<leader>sb', function()
+        require('telescope.builtin').buffers {
+          sort_lastused = true,
+        }
+      end, { desc = '[S]earch existing [B]uffers' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
