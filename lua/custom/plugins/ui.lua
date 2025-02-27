@@ -6,6 +6,17 @@ return {
     config = function()
       require('catppuccin').setup {
         flavour = 'macchiato',
+        highlight_overrides = {
+          macchiato = function(macchiato)
+            return {
+              LineNr = {
+                fg = '#b49edb',
+              },
+              LineNrAbove = { fg = '#8087a2' },
+              LineNrBelow = { fg = '#8087a2' },
+            }
+          end,
+        },
       }
       vim.cmd.colorscheme 'catppuccin'
     end,
