@@ -5,6 +5,11 @@ return {
     config = true,
   },
   {
+    "windwp/nvim-ts-autotag",
+    event = 'InsertEnter',
+    config = true,
+  },
+  {
     'folke/flash.nvim',
     event = 'VeryLazy',
     vscode = true,
