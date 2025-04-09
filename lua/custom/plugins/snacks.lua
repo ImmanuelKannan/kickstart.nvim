@@ -9,7 +9,7 @@ return {
       {
         '<leader><space>',
         function()
-          Snacks.picker.files({ hidden = true, ignored = true, })
+          Snacks.picker.files({ hidden = true, ignored = true, exclude={ "**/node_modules/*", "**/dist/*" } })
         end,
         desc = 'Find Files',
       },
