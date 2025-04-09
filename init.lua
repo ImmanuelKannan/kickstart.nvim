@@ -169,17 +169,6 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- Split Management
-vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { desc = '[W]indow Split [V]ertical' })
-vim.keymap.set('n', '<leader>wh', ':split<CR>', { desc = '[W]indow Split [H]orizontal' })
-
-vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Navigate [W]indow Left' })
-vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'Navigate [W]indow Down' })
-vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = 'Navigate [W]indow Up' })
-vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'Navigate [W]indow Right' })
-
-vim.keymap.set('n', '<leader>wq', ':close<CR>', {desc = '[W]indow [Q]uit'})
-
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -198,6 +187,10 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
+vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { desc = '[W]indow Split [V]ertical' })
+vim.keymap.set('n', '<leader>wh', ':split<CR>', { desc = '[W]indow Split [H]orizontal' })
+vim.keymap.set('n', '<leader>wq', ':close<CR>', {desc = '[W]indow [Q]uit'})
+
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
