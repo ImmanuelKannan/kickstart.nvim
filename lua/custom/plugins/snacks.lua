@@ -9,7 +9,7 @@ return {
       {
         '<leader><space>',
         function()
-          Snacks.picker.files({ hidden = true, ignored = true, exclude={ "**/node_modules/*", "**/dist/*" } })
+          Snacks.picker.files { hidden = true, ignored = true, exclude = { '**/node_modules/*', '**/dist/*' } }
         end,
         desc = 'Find Files',
       },
@@ -40,6 +40,20 @@ return {
           Snacks.picker.grep()
         end,
         desc = 'Search Grep',
+      },
+      {
+        '<leader>s"',
+        function()
+          Snacks.picker.registers()
+        end,
+        desc = 'Search Registers',
+      },
+      {
+        '<leader>ss',
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = 'Search Document Symbols',
       },
     },
   },
