@@ -2,7 +2,7 @@ return {
   {
     'folke/snacks.nvim',
     opts = {
-      scroll = {},
+      -- scroll = {},
       picker = {},
     },
     keys = {
@@ -16,14 +16,14 @@ return {
       {
         '<leader>sb',
         function()
-          Snacks.picker.buffers()
+          Snacks.picker.buffers({ sort_lastused = true, current = false })
         end,
         desc = 'Search Buffers',
       },
       {
         '<leader>,',
         function()
-          Snacks.picker.buffers()
+          Snacks.picker.buffers({ sort_lastused = true, current = false })
         end,
         desc = 'Search Buffers',
       },
