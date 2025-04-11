@@ -3,7 +3,10 @@ return {
     'folke/snacks.nvim',
     opts = {
       -- scroll = {},
-      picker = {},
+      picker = {
+        preview = false,
+        layout = { preset = 'vscode' },
+      },
     },
     keys = {
       {
@@ -16,14 +19,14 @@ return {
       {
         '<leader>sb',
         function()
-          Snacks.picker.buffers({ sort_lastused = true, current = false })
+          Snacks.picker.buffers { sort_lastused = true, current = false }
         end,
         desc = 'Search Buffers',
       },
       {
         '<leader>,',
         function()
-          Snacks.picker.buffers({ sort_lastused = true, current = false })
+          Snacks.picker.buffers { sort_lastused = true, current = false }
         end,
         desc = 'Search Buffers',
       },
