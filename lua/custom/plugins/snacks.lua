@@ -40,7 +40,7 @@ return {
       {
         '<leader>sg',
         function()
-          Snacks.picker.grep()
+          Snacks.picker.grep({ layout = 'vertical' })
         end,
         desc = 'Search Grep',
       },
