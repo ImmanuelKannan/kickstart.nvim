@@ -189,7 +189,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 --  See `:help wincmd` for a list of all window commands
 vim.keymap.set('n', '<leader>wv', ':vsplit<CR>', { desc = '[W]indow Split [V]ertical' })
 vim.keymap.set('n', '<leader>wh', ':split<CR>', { desc = '[W]indow Split [H]orizontal' })
-vim.keymap.set('n', '<leader>wq', ':close<CR>', {desc = '[W]indow [Q]uit'})
+vim.keymap.set('n', '<leader>wq', ':close<CR>', { desc = '[W]indow [Q]uit' })
 
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -602,10 +602,14 @@ require('lazy').setup({
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', function()
+            Snacks.picker.lsp_definitions()
+          end, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('gr', function()
+            Snacks.picker.lsp_references { layout = 'default' }
+          end, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
