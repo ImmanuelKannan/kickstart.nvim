@@ -58,6 +58,13 @@ return {
         end,
         desc = 'Search Document Symbols',
       },
+      {
+        '<leader>lg',
+        function ()
+          Snacks.lazygit()
+        end,
+        desc = '[L]azy[G]it'
+      }
     },
   },
 }
