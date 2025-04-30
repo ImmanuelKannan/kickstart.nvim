@@ -40,7 +40,7 @@ return {
       {
         '<leader>sg',
         function()
-          Snacks.picker.grep({ layout = 'vertical' })
+          Snacks.picker.grep { layout = 'vertical' }
         end,
         desc = 'Search Grep',
       },
@@ -60,11 +60,18 @@ return {
       },
       {
         '<leader>lg',
-        function ()
+        function()
           Snacks.lazygit()
         end,
-        desc = '[L]azy[G]it'
-      }
+        desc = '[L]azy[G]it',
+      },
+      {
+        '<leader>sd',
+        function()
+          Snacks.picker.diagnostics_buffer { preview = true }
+        end,
+        desc = 'Search Diagnostics',
+      },
     },
   },
 }
