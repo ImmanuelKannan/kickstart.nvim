@@ -7,6 +7,13 @@ return {
         -- there are no required options atm
         -- engine = 'ripgrep' is default, but 'astgrep' can be specified
       });
-    end
+    end,
+    keys = {
+      {
+        '<leader>sr',
+        '<cmd>GrugFar<cr>',
+        desc = 'Search & Replace',
+      },
+    }
   },
 }
