@@ -66,6 +66,33 @@ return {
         desc = '[L]azy[G]it',
       },
       {
+        '<leader>gs',
+        function()
+          Snacks.lazygit.open {
+            args = { 'status' },
+          }
+        end,
+        desc = 'Git Status',
+      },
+      {
+        '<leader>gb',
+        function()
+          Snacks.lazygit.open {
+            args = { 'branch' },
+          }
+        end,
+        desc = 'Git Branches',
+      },
+      {
+        '<leader>gl',
+        function()
+          Snacks.lazygit.open {
+            args = { 'log' },
+          }
+        end,
+        desc = 'Git Log',
+      },
+      {
         '<leader>sd',
         function()
           Snacks.picker.diagnostics_buffer { preview = true }
