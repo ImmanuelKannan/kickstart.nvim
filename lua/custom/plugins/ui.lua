@@ -49,6 +49,7 @@ return {
   },
   {
     'Bekaboo/dropbar.nvim',
+    enabled = false,
     config = function()
       local dropbar = require 'dropbar.api'
       vim.keymap.set('n', '<Leader>;', dropbar.pick, { desc = 'Pick symbols in winbar' })
