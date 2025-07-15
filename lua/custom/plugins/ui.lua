@@ -56,4 +56,5 @@ return {
       vim.keymap.set('n', '];', dropbar.select_next_context, { desc = 'Select next context' })
     end,
   },
+  { "mistricky/codesnap.nvim", build = "make" },
 }
