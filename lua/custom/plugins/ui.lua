@@ -57,7 +57,13 @@ return {
       vim.keymap.set('n', '];', dropbar.select_next_context, { desc = 'Select next context' })
     end,
   },
-  { 'mistricky/codesnap.nvim', build = 'make' },
+  {
+    'mistricky/codesnap.nvim',
+    build = 'make',
+    config = function()
+      require('codesnap').setup { has_line_number = true, watermark = '' }
+    end,
+  },
   {
     'kevinhwang91/nvim-ufo',
     dependencies = {
