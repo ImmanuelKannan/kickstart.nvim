@@ -51,4 +51,8 @@ return {
     version = '*',
     config = true,
   },
+  {
+    "tpope/vim-fugitive",
+    event = "BufWinEnter"
+  }
 }
