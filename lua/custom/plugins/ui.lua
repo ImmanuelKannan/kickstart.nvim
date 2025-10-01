@@ -30,6 +30,11 @@ return {
           theme = 'palenight',
           extensions = { 'neo-tree' },
         },
+        sections = {
+          lualine_c = {
+            { 'filename', path = 1 },
+          },
+        },
       }
     end,
   },
